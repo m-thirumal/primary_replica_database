@@ -1,4 +1,4 @@
-package in.thirumal.primary_replica_database;
+package in.thirumal;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
