@@ -14,10 +14,11 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 @Configuration
 public class TransactionRoutingDataSource extends AbstractRoutingDataSource {
 
-	@Autowired
+	
 	PersistenceConfig persistenceConfig;
 	
 	public TransactionRoutingDataSource() {
+		persistenceConfig = new PersistenceConfig();
 		setDataSource();
 	}
 	
