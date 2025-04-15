@@ -12,3 +12,35 @@ https://spring.io/blog/2007/01/23/dynamic-datasource-routing/
 
 
 
+## SQL
+
+```
+
+-- DROP SEQUENCE IF EXISTS public.order_id_seq;
+
+CREATE SEQUENCE IF NOT EXISTS public.order_id_seq
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 9223372036854775807
+    CACHE 1;
+
+ALTER SEQUENCE public.order_id_seq
+    OWNED BY public."order".order_id;
+
+ALTER SEQUENCE public.order_id_seq
+    OWNER TO postgres;
+    
+CREATE TABLE IF NOT EXISTS public."order"
+(
+    order_id bigint NOT NULL DEFAULT nextval('order_id_seq'::regclass),
+    name character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT order_pkey PRIMARY KEY (order_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."order"
+    OWNER to postgres;
+    
+```
