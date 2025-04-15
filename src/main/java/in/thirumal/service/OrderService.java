@@ -27,11 +27,11 @@ public class OrderService {
 
 	@Transactional
 	public int createOrder() {//Routes to Primary
-		return orderRepository.create(Order.builder().name("T").build());
+		return orderRepository.create(Order.builder().name("REplica Data").build());
 	}
 
-	@Transactional(readOnly = true)
 	@ReadOnly
+	@Transactional(readOnly = true)
 	public List<Order> listOrder() {//Routes to Replica
 		return orderRepository.list();
 	}

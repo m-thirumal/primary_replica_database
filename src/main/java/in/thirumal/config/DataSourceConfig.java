@@ -24,13 +24,13 @@ import org.springframework.transaction.PlatformTransactionManager;
 @Configuration
 public class DataSourceConfig {
 
-	@Bean
+	@Bean(name = "primaryDataSource")
     @ConfigurationProperties("primary.datasource")
     DataSource primaryDataSource() {
         return DataSourceBuilder.create().build();
     }
 
-    @Bean
+    @Bean(name = "replicaDataSource")
     @ConfigurationProperties("replica.datasource")
     DataSource replicaDataSource() {
         return DataSourceBuilder.create().build();
@@ -41,18 +41,19 @@ public class DataSourceConfig {
     DataSource dbRouter(@Qualifier("primaryDataSource") DataSource primary,
             @Qualifier("replicaDataSource") DataSource replica) {
         Map<Object, Object> dbTargets = new HashMap<>();
-        dbTargets.put(DataSourceType.PRIMARY, primaryDataSource());
-        dbTargets.put(DataSourceType.REPLICA, replicaDataSource());
+        dbTargets.put(DataSourceType.PRIMARY, primary);
+        dbTargets.put(DataSourceType.REPLICA, replica);
 
         AbstractRoutingDataSource dbRouter = new AbstractRoutingDataSource() {
             @Override
             protected Object determineCurrentLookupKey() {
             	DataSourceType key = DataSourceContextHolder.getCurrentDataSource();
+            	System.out.println("🔁 Routing to: " + key);
                 return dbTargets.containsKey(key) ? key : DataSourceType.PRIMARY; // Fallback to primary
             }
         };
         dbRouter.setTargetDataSources(dbTargets);
-        dbRouter.setDefaultTargetDataSource(primaryDataSource());
+        dbRouter.setDefaultTargetDataSource(primary);
         dbRouter.afterPropertiesSet(); // Initialize properly
         return dbRouter;
     }
