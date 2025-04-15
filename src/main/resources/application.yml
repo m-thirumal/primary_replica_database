@@ -1,17 +1,33 @@
-spring:
+# Primary DB (PostgreSQL)
+primary:
   datasource:
-    url: jdbc:postgresql://192.168.0.27:5432/primary
+    url: jdbc:postgresql://localhost:5432/primary
+    jdbcUrl: ${primary.datasource.url}
     username: postgres
     password: thirumal
-   
-jdbc:
-  primary: ${spring.datasource.url}
-  replica: jdbc:postgresql://192.168.0.27:5432/primary
+    driver-class-name: org.postgresql.Driver
+    hikari: 
+      jdbc-url: ${primary.datasource.url}
+      maximum-pool-size: 10
+      minimum-idle: 2
 
+# Replica DB 
+replica:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/replica
+    jdbcUrl: ${replica.datasource.url}
+    username: postgres
+    password: thirumal
+    driver-class-name: org.postgresql.Driver
+    hikari: 
+      jdbc-url: ${replica.datasource.url}
+      maximum-pool-size: 5
+      minimum-idle: 1
     
 logging:
   file:
     name: logs/primary_replica.log 
   level: 
-    org.springframework:
-      jdbc.datasource.DataSourceTransactionManager: debug
+    root: INFO
+    '[org.springframework]': INFO
+    '[jdbc.datasource.DataSourceTransactionManager]': debug

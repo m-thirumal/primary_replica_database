@@ -8,5 +8,85 @@
     "name": "jdbc.replica",
     "type": "java.lang.String",
     "description": "A description for 'jdbc.replica'"
+  },
+  {
+    "name": "replica.datasource.username",
+    "type": "java.lang.String",
+    "description": "A description for 'replica.datasource.username'"
+  },
+  {
+    "name": "primary.datasource.driver-class-name",
+    "type": "java.lang.String",
+    "description": "A description for 'primary.datasource.driver-class-name'"
+  },
+  {
+    "name": "primary.datasource.url",
+    "type": "java.lang.String",
+    "description": "A description for 'primary.datasource.url'"
+  },
+  {
+    "name": "primary.datasource.jdbcUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'primary.datasource.jdbcUrl'"
+  },
+  {
+    "name": "primary.datasource.username",
+    "type": "java.lang.String",
+    "description": "A description for 'primary.datasource.username'"
+  },
+  {
+    "name": "primary.datasource.password",
+    "type": "java.lang.String",
+    "description": "A description for 'primary.datasource.password'"
+  },
+  {
+    "name": "primary.datasource.hikari.jdbc-url",
+    "type": "java.lang.String",
+    "description": "A description for 'primary.datasource.hikari.jdbc-url'"
+  },
+  {
+    "name": "primary.datasource.hikari.minimum-idle",
+    "type": "java.lang.String",
+    "description": "A description for 'primary.datasource.hikari.minimum-idle'"
+  },
+  {
+    "name": "primary.datasource.hikari.maximum-pool-size",
+    "type": "java.lang.String",
+    "description": "A description for 'primary.datasource.hikari.maximum-pool-size'"
+  },
+  {
+    "name": "replica.datasource.url",
+    "type": "java.lang.String",
+    "description": "A description for 'replica.datasource.url'"
+  },
+  {
+    "name": "replica.datasource.jdbcUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'replica.datasource.jdbcUrl'"
+  },
+  {
+    "name": "replica.datasource.password",
+    "type": "java.lang.String",
+    "description": "A description for 'replica.datasource.password'"
+  },
+  {
+    "name": "replica.datasource.driver-class-name",
+    "type": "java.lang.String",
+    "description": "A description for 'replica.datasource.driver-class-name'"
+  },
+  {
+    "name": "replica.datasource.hikari.jdbc-url",
+    "type": "java.lang.String",
+    "description": "A description for 'replica.datasource.hikari.jdbc-url'"
+  },
+  {
+    "name": "replica.datasource.hikari.maximum-pool-size",
+    "type": "java.lang.String",
+    "description": "A description for 'replica.datasource.hikari.maximum-pool-size'"
+  },
+  {
+    "name": "replica.datasource.hikari.minimum-idle",
+    "type": "java.lang.String",
+    "description": "A description for 'replica.datasource.hikari.minimum-idle'"
   }
 ]}
